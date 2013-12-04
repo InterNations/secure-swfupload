@@ -809,7 +809,7 @@ SWFUpload.prototype.cleanUp = function (movieElement) {
 					// marcelbeumer: added test if property starts with capital to prevent
 					// IE9+ from throwing errors in combination with old jquery version
 					// like 1.7
-					if (/^[A-Z]/.test(key) && typeof(movieElement[key]) === "function")
+					if (/^[A-Z]/.test(key) && typeof(movieElement[key]) === "function") {
 						movieElement[key] = null;
 					}
 				} catch (ex) {
