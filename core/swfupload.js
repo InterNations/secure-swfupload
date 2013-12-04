@@ -3,7 +3,7 @@
  *
  * mmSWFUpload 1.0: Flash upload dialog - http://profandesign.se/swfupload/,  http://www.vinterwebb.se/
  *
- * SWFUpload is (c) 2006-2007 Lars Huring, Olov Nilzén and Mammon Media and is released under the MIT License:
+ * SWFUpload is (c) 2006-2007 Lars Huring, Olov Nilzï¿½n and Mammon Media and is released under the MIT License:
  * http://www.opensource.org/licenses/mit-license.php
  *
  * SWFUpload 2 is (c) 2007-2008 Jake Roberts and is released under the MIT License:
@@ -806,7 +806,10 @@ SWFUpload.prototype.cleanUp = function (movieElement) {
 			this.debug("Removing Flash functions hooks (this should only run in IE and should prevent memory leaks)");
 			for (var key in movieElement) {
 				try {
-					if (typeof(movieElement[key]) === "function") {
+					// marcelbeumer: added test if property starts with capital to prevent
+					// IE9+ from throwing errors in combination with old jquery version
+					// like 1.7
+					if (/^[A-Z]/.test(key) && typeof(movieElement[key]) === "function")
 						movieElement[key] = null;
 					}
 				} catch (ex) {
