@@ -192,7 +192,9 @@ SWFUpload.prototype.initSettings = function () {
 	if (!this.settings.preserve_relative_urls) {
 		//this.settings.flash_url = SWFUpload.completeURL(this.settings.flash_url);	// Don't need to do this one since flash doesn't look at it
 		this.settings.upload_url = SWFUpload.completeURL(this.settings.upload_url);
-		this.settings.button_image_url = SWFUpload.completeURL(this.settings.button_image_url);
+        if (this.settings.button_image_url) {
+            this.settings.button_image_url = SWFUpload.completeURL(this.settings.button_image_url);
+        }
 	}
 	
 	delete this.ensureDefault;
